@@ -2,25 +2,37 @@
 A personal project to trim a big EDH list to a Commander Deck
 
 # Next Step
-	Colocar isso no readme
+	Fazer o teste em Vuex
+		Inserir duplicata
+		Inserir Ultima categoria
 
 # TODO
+	Definition of Done V0.1
+		Importar uma lista no textarea
+		Exportar em formato de arquivo(Xmage e Não Xmage)
+		Drag and drop das listas
+		Botão para colocar no maybeboard
+
 	Colocar dois repos diferentes e so ativa os dois com um bash
 
-	Syntax highlight
-		https://stackoverflow.com/questions/45227611/how-can-i-enable-syntax-highlighting-for-vue-files-in-atom
-	Mudar o emmet para funcionar com vue
-
 	Fazer o render da lista importada
+		Colocar os simbolos de mana na direita como o css
+		Falta o css da página
+		Falta o css	do vue smoth
 
-	Draggable
-	  https://sortablejs.github.io/Vue.Draggable/#/nested-with-vmodel
-	  https://github.com/SortableJS/Vue.Draggable/blob/master/example/components/nested-with-vmodel.vue
+	Imprimir o arquivo 	
+			Separado com categoria para reimportar
+			Xmage? SIM
+
+	Contar os dois Ex.: Lands 20/20 Target Removal 30/20 - Da 50/40
+	Colocar um botão de ir para o maybeboard em cada carta
+
+	Fazer o teste em vuex
+	 		Inserir duplicata
+			Inserir Ultima categoria
 
 	Inserir o commander e a lista de cartas - Funcionou
-		Fazer um componente para renderizar as cartas
-		Tem uma pasta Archidekt-trick-Sem REPO com o archidekt trick para você colocar la 	
-			Colocar os simbolos na direita como o css
+
 	Remover as duplicatas
 		Inserir o mainboard
 			Quando inserir nas categorias por exemplo
@@ -33,15 +45,6 @@ A personal project to trim a big EDH list to a Commander Deck
 					1 Card 1
 					...
 			Você tira da mainboard		
-
-
-	Imprimir o arquivo 	
-		Separado com categoria para reimportar
-		Com a lista e o commander normal para importar no untap 		
-		Xmage?
-	Contar todos os valores nas categorias (Big dumb creatures: 10)
-	Contar os dois Ex.: Lands 20/20 Target Removal 30/20 - Da 50/40
-	Colocar um botão de ir para o maybeboard
 
 	Mudanças no layout
 		Itens do menu: New deck, Modify Deck, Card Database  
@@ -62,6 +65,8 @@ A personal project to trim a big EDH list to a Commander Deck
 	reset-css?
 
 	https://github.com/vmaimone/vue-context-menu
+
+	Procurar Mixins
 
 
 # Next Version
@@ -86,23 +91,23 @@ A personal project to trim a big EDH list to a Commander Deck
 
 	https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations
 
-	Source for the Drag and Drop
-		https://sortablejs.github.io/Vue.Draggable/#/nested-with-vmodel
-		https://github.com/SortableJS/Vue.Draggable
-		https://sortablejs.github.io/Vue.Draggable/#/simple
-
 	https://br.vuejs.org/v2/examples/modal.html
 
 	https://github.com/euvl/vue-js-modal
 
 	https://github.com/euvl/v-clipboard
 
+	Source for the Drag and Drop
+			https://kutlugsahin.github.io/vue-smooth-dnd/#/cards
+			https://github.com/kutlugsahin/vue-smooth-dnd/blob/master/demo/src/pages/cards.vue
+			https://github.com/kutlugsahin/vue-smooth-dnd/blob/55252a6b42d449f5bda9014369cace3fe56810de/demo/src/assets/demos.css
 
+----
 
 
 # Project Stuff
 
-## Project setup
+### Project setup
 ```
 npm install
 ```

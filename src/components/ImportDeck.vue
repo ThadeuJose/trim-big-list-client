@@ -4,15 +4,19 @@
   <input type="text" v-model='commander'>
   <textarea v-model='input'></textarea>
   <button @click='import_deck'>Import</button>
-  <div>{{commander}}</div>
-  <div>{{input}}</div>
-  <div>{{storage}}</div>
+  <listOfCards/>
 </div>
 </template>
 
 <script>
+
+import listOfCards from '@/components/ListOfCards.vue';
+
 export default {
   name: 'ImportDeck',
+  components: {
+    listOfCards,
+  },
   props: {
 
   },
@@ -20,7 +24,6 @@ export default {
     return {
       commander: this.value,
       input: this.value,
-      storage: this.$store.getters.all,
     };
   },
   methods: {
@@ -30,13 +33,10 @@ export default {
       let categoryCards = [];
       response.forEach((value, key) => {
         const line = value;
-
         if (value) {
           if (value.startsWith('//')) {
             if (categoryCards.length !== 0) {
               this.$store.commit('addCategory', { categoryName, categoryCards });
-              console.log(categoryName);
-              console.log(categoryCards);
               categoryCards = [];
             }
             categoryName = line.substring(2);
@@ -45,11 +45,10 @@ export default {
           }
           if (response.length - 1 === key) {
             this.$store.commit('addCategory', { categoryName, categoryCards });
-            console.log(categoryName);
-            console.log(categoryCards);
           }
         }
       });
+      this.$store.commit('addCategory', { categoryName, categoryCards });
     },
   },
 };
