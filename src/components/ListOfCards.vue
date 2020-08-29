@@ -1,7 +1,10 @@
 <template>
   <div>
     {{cards}}
-    <button @click = update>Update</button>
+    <button @click = update>Update Cards </button>
+
+    <textarea name="cards" rows="8" cols="80" v-model="cardsText"></textarea>
+    <button @click = updateText>Update Text</button>
 
     <div v-for="(items,index) in cards" :key="index">
         {{makeTitle(index,items)}}
@@ -14,6 +17,7 @@
          </Draggable>
        </Container>
      </div>
+
   </div>
 </template>
 
@@ -30,11 +34,20 @@ export default {
   data() {
     return {
       cards: {},
+      cardsText: '',
     };
   },
   methods: {
     update() {
       this.cards = this.$store.getters.listOfCards;
+    },
+
+    updateText() {
+      console.log('Ok');
+      this.cardsText = '';
+      Object.entries(this.cards).forEach((value) => {
+        this.cardsText += `//${value[0]}\n${value[1].join('\n')}\n\n`;
+      });
     },
 
     // TODO: Ajeitar o titulo

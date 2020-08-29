@@ -8,12 +8,21 @@ A personal project to trim a big EDH list to a Commander Deck
 
 # TODO
 	Definition of Done V0.1
-		Importar uma lista no textarea
-		Exportar em formato de arquivo(Xmage e Não Xmage)
-		Drag and drop das listas
+		Importar uma lista no textarea X
+		Exportar em formato de arquivo(Xmage e Não Xmage)(Pode ser para o clipboard) X
+		Drag and drop das listas X
 		Botão para colocar no maybeboard
 
 	Colocar dois repos diferentes e so ativa os dois com um bash
+
+	Exportar em formato de arquivo
+		Da mesma maneira que eles são importadas
+		Exportar para o clipboard por enquanto
+		https://codepen.io/PJCHENder/pen/jamJpj?editors=1010
+
+
+	Exportar em formato de arquivo(Xmage e Não Xmage)
+		https://stackoverflow.com/questions/8390855/how-to-instantiate-a-file-object-in-javascript
 
 	Fazer o render da lista importada
 		Colocar os simbolos de mana na direita como o css
@@ -53,9 +62,7 @@ A personal project to trim a big EDH list to a Commander Deck
 
 	Drag and Drop
 		É para a coluna toda
-		https://sortablejs.github.io/Vue.Draggable/#/nested-with-vmodel
-		https://github.com/SortableJS/Vue.Draggable
-		https://sortablejs.github.io/Vue.Draggable/#/simple
+		Ver se o vue-smooth-dnd ajuda no drag and drop para alem da página
 
 	Fazer um cache para não ir no scryfall toda hora
 		Axious
