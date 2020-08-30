@@ -11,7 +11,15 @@ A personal project to trim a big EDH list to a Commander Deck
 		Importar uma lista no textarea X
 		Exportar em formato de arquivo(Xmage e Não Xmage)(Pode ser para o clipboard) X
 		Drag and drop das listas X
-		Botão para colocar no maybeboard
+		Botão para colocar no maybeboard X
+
+		Separar a logica num arquivo js e testar
+			IMPORTANTE
+			https://medium.com/@lachlanmiller_52885/building-a-tech-crunch-style-progress-scroll-with-vue-svg-and-typescript-42cc35b472fb
+
+		Fazer o teste em vuex
+		 		Inserir duplicata
+				Inserir Ultima categoria
 
 	Colocar dois repos diferentes e so ativa os dois com um bash
 
@@ -36,9 +44,7 @@ A personal project to trim a big EDH list to a Commander Deck
 	Contar os dois Ex.: Lands 20/20 Target Removal 30/20 - Da 50/40
 	Colocar um botão de ir para o maybeboard em cada carta
 
-	Fazer o teste em vuex
-	 		Inserir duplicata
-			Inserir Ultima categoria
+
 
 	Inserir o commander e a lista de cartas - Funcionou
 

@@ -3,6 +3,8 @@
     {{cards}}
     <button @click = update>Update Cards </button>
 
+    {{maybeboard}}
+
     <textarea name="cards" rows="8" cols="80" v-model="cardsText"></textarea>
     <button @click = updateText>Update Text</button>
 
@@ -13,6 +15,7 @@
          <Draggable v-for="item in items" :key="item">
            <div class="draggable-item">
              {{item}}
+             <button @click = moveToMaybeboard(item,index)>Maybeboard</button>
            </div>
          </Draggable>
        </Container>
@@ -35,6 +38,7 @@ export default {
     return {
       cards: {},
       cardsText: '',
+      maybeboard: [],
     };
   },
   methods: {
@@ -43,11 +47,22 @@ export default {
     },
 
     updateText() {
-      console.log('Ok');
       this.cardsText = '';
+      this.cardsText += `//Maybeboard\n${this.maybeboard.join('\n')}\n\n`;
       Object.entries(this.cards).forEach((value) => {
         this.cardsText += `//${value[0]}\n${value[1].join('\n')}\n\n`;
       });
+    },
+
+    moveToMaybeboard(elem, listname) {
+      console.log(`${elem} ${listname}`);
+      console.log(this.cards[listname]);
+      this.maybeboard.push(elem);
+      const array = this.cards[listname];
+      const index = array.indexOf(elem);
+      if (index > -1) {
+        array.splice(index, 1);
+      }
     },
 
     // TODO: Ajeitar o titulo
@@ -67,6 +82,7 @@ export default {
       return sum;
     },
 
+    // Drag and Drop Area
     onDrop(categoryName, dropResult) {
       const categoryCards = this.applyDrag(categoryName, dropResult);
       if (categoryCards) {
