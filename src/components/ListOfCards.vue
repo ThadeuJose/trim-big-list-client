@@ -1,12 +1,9 @@
 <template>
   <div>
-    {{cards}}
-    <button @click = update>Update Cards </button>
-
-    {{maybeboard}}
+    {{cards}} | {{maybeboard}}
 
     <textarea name="cards" rows="8" cols="80" v-model="cardsText"></textarea>
-    <button @click = updateText>Update Text</button>
+    <button @click = "updateText">Update Text</button>
 
     <div v-for="(items,index) in cards" :key="index">
         {{makeTitle(index,items)}}
@@ -15,7 +12,7 @@
          <Draggable v-for="item in items" :key="item">
            <div class="draggable-item">
              {{item}}
-             <button @click = moveToMaybeboard(item,index)>Maybeboard</button>
+             <button @click = "moveToMaybeboard(item,index)">Maybeboard</button>
            </div>
          </Draggable>
        </Container>
@@ -70,7 +67,7 @@ export default {
       if (title === 'Mainboard') {
         return `${title} ${this.countItems(arr)}`;
       }
-      return `${title}/${this.countItems(arr)}`;
+      return `${title} ${this.countItems(arr)}/${this.$store.getters.maxQuantity(title)}`;
     },
 
     countItems(items) {

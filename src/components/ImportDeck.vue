@@ -4,13 +4,14 @@
   <input type="text" v-model='commander'>
   <textarea v-model='input'></textarea>
   <button @click='import_deck'>Import</button>
-  <listOfCards/>
+  <listOfCards ref='listOfCards'/>
 </div>
 </template>
 
 <script>
 
 import listOfCards from '@/components/ListOfCards.vue';
+import parserDeckList from '@/resources/parserDecklist';
 
 export default {
   name: 'ImportDeck',
@@ -28,27 +29,10 @@ export default {
   },
   methods: {
     import_deck() {
-      const response = this.input.split('\n');
-      let categoryName = '';
-      let categoryCards = [];
-      response.forEach((value, key) => {
-        const line = value;
-        if (value) {
-          if (value.startsWith('//')) {
-            if (categoryCards.length !== 0) {
-              this.$store.commit('addCategory', { categoryName, categoryCards });
-              categoryCards = [];
-            }
-            categoryName = line.substring(2);
-          } else {
-            categoryCards.push(value);
-          }
-          if (response.length - 1 === key) {
-            this.$store.commit('addCategory', { categoryName, categoryCards });
-          }
-        }
-      });
-      this.$store.commit('addCategory', { categoryName, categoryCards });
+      const decklist = parserDeckList(this.input);
+      this.$store.commit('setDecklist', { decklist });
+      this.$refs.listOfCards.update();
+      console.log(this.$store.getters.decklist);
     },
   },
 };

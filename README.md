@@ -13,13 +13,31 @@ A personal project to trim a big EDH list to a Commander Deck
 		Drag and drop das listas X
 		Botão para colocar no maybeboard X
 
-		Separar a logica num arquivo js e testar
-			IMPORTANTE
-			https://medium.com/@lachlanmiller_52885/building-a-tech-crunch-style-progress-scroll-with-vue-svg-and-typescript-42cc35b472fb
+	Definition of Done V0.2
+			Inserir sem duplicata
+				Deixar os numeros na frente
+				Consertar os nomes
+			Colocar as colunas uma do lado das outras 	
+				Colocar o maybeboard, Garbage embaixo minimizado
+			Melhorar o css um pouco
 
-		Fazer o teste em vuex
-		 		Inserir duplicata
-				Inserir Ultima categoria
+	Definition of Done V0.3
+			Colocar isso em um server porque essa é única maneira dessa bagaça funcionar					
+			Colocar um banco de dados?
+
+	Separar a logica num arquivo js e testar
+		https://www.chaijs.com/api/bdd/
+		Falta testar de verdade
+			Import decklist
+				Só a lista sem nada
+				Com tab
+				Com // barras no nome - Wear // Tear
+
+	Remover a logica do vue e colocar em uns arquivos a parte
+			Fazer a parte dos insert sem duplicata com testes
+			Importar as informações das cartas
+			Um pouco do CSS
+			     Listas na horizontal
 
 	Colocar dois repos diferentes e so ativa os dois com um bash
 
@@ -115,8 +133,10 @@ A personal project to trim a big EDH list to a Commander Deck
 			https://github.com/kutlugsahin/vue-smooth-dnd/blob/master/demo/src/pages/cards.vue
 			https://github.com/kutlugsahin/vue-smooth-dnd/blob/55252a6b42d449f5bda9014369cace3fe56810de/demo/src/assets/demos.css
 
-----
+	Logic in a separate file
+				https://medium.com/@lachlanmiller_52885/building-a-tech-crunch-style-progress-scroll-with-vue-svg-and-typescript-42cc35b472fb
 
+----
 
 # Project Stuff
 

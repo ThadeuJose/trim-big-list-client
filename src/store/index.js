@@ -6,22 +6,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     commander: [], // Partner Commander
-    mainboard: [],
+    decklist: new Map(),
   },
   mutations: {
-    addCategory(state, payload) {
-      const name = payload.categoryName;
-      const cards = payload.categoryCards;
-      if (name === 'Main') {
-        state.mainboard = payload.categoryCards;
-      } else {
-        const quantity = name.substring(name.lastIndexOf(':') + 1).trim();
-        const categoryName = name.substring(0, name.lastIndexOf(':'));
-        state[categoryName] = {
-          quantity,
-          cards,
-        };
-      }
+    setDecklist(state, payload) {
+      state.decklist = payload.decklist;
     },
     updateCategory(state, payload) {
       const name = payload.categoryName;
@@ -36,17 +25,12 @@ export default new Vuex.Store({
   },
   getters: {
     all: (state) => state,
-    mainboard: (state) => state.mainboard,
+    decklist: (state) => state.decklist,
+    maxQuantity: (state) => (id) => state.decklist.get(id).maxQuantity,
     listOfCards: (state) => {
       const response = {};
-      response.Mainboard = state.mainboard;
-
-      Object.entries(state).forEach((value) => {
-        if (value[1].cards !== undefined) {
-          const name = `${value[0]} ${value[1].quantity}`;
-          const list = value[1].cards;
-          response[name] = list;
-        }
+      state.decklist.forEach((value, key) => {
+        response[key] = value.cards;
       });
       console.log(response);
       return response;
