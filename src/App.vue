@@ -2,7 +2,9 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/import"> Import Deck</router-link> |
+      <router-link to="/import">Import Deck</router-link> |
+      <router-link to="/card_add">Add Card</router-link> |
+      <router-link to="/card_view">View Card</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
@@ -10,7 +12,7 @@
 </template>
 
 <style>
-#app {
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -29,5 +31,5 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>

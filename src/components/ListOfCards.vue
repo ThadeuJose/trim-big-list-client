@@ -11,7 +11,7 @@
          @drop="onDrop(index, $event)">
          <Draggable v-for="item in items" :key="item">
            <div class="draggable-item">
-             {{item}}
+             <cards :cardname='item'></cards>
              <button @click = "moveToMaybeboard(item,index)">Maybeboard</button>
            </div>
          </Draggable>
@@ -23,19 +23,21 @@
 
 <script>
 import { Container, Draggable } from 'vue-smooth-dnd';
+import cards from '@/components/Cards.vue';
 
 export default {
   name: 'listOfCards',
   components: {
-    Container, Draggable,
+    Container, Draggable, cards,
   },
   props: {
+
   },
   data() {
     return {
       cards: {},
       cardsText: '',
-      maybeboard: [],
+      maybeboard: [], // TODO: Mover para a store
     };
   },
   methods: {

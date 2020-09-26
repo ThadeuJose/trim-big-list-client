@@ -1,4 +1,9 @@
-// formatLine - format a line to start with a number
+function formatLine(line) {
+  if (/^\d/.test(line)) {
+    return line.trim();
+  }
+  return `1 ${line.trim()}`;
+}
 
 function getTitle(item) {
   return item.substring(2, item.lastIndexOf(':')).trim();
@@ -24,7 +29,7 @@ function parseSections(section) {
         maxQuantity = getMaxQuantity(item);
       }
     } else {
-      cards.push(item.trim());
+      cards.push(formatLine(item));
     }
   });
   return { categoryName, object: { maxQuantity, cards } };

@@ -2,42 +2,82 @@
 A personal project to trim a big EDH list to a Commander Deck
 
 # Next Step
-	Fazer o teste em Vuex
-		Inserir duplicata
-		Inserir Ultima categoria
+Inserir a carta sem duplicata com erro mesmo e depois conserta os decks
+Fazer o CRUD das cartas
+	U
+
 
 # TODO
-	Definition of Done V0.1
-		Importar uma lista no textarea X
-		Exportar em formato de arquivo(Xmage e Não Xmage)(Pode ser para o clipboard) X
-		Drag and drop das listas X
-		Botão para colocar no maybeboard X
+		Ajeitar o css dessa bagaça +-
+		Fazer o CRUD das cartas
+			C
+				Falta escolher as imagens
+			R
+				Falta mostrar as imagens
+			U
+			D
+		Quando inserir a decklist as cartas tem que estar cadastradas? Nope
 
-	Definition of Done V0.2
-			Inserir sem duplicata
-				Deixar os numeros na frente
-				Consertar os nomes
-			Colocar as colunas uma do lado das outras 	
-				Colocar o maybeboard, Garbage embaixo minimizado
-			Melhorar o css um pouco
+		Inserir sem duplicata
+			Deixar os numeros na frente
+			Consertar os nomes
+		Colocar as colunas uma do lado das outras 	
+			Colocar o maybeboard, Garbage embaixo minimizado
+		Melhorar o css um pouco
 
-	Definition of Done V0.3
-			Colocar isso em um server porque essa é única maneira dessa bagaça funcionar					
-			Colocar um banco de dados?
+		Usar o programa de fato
+    	Funcionalidades
+
+	Colocar isso em um server porque essa é única maneira dessa bagaça funcionar					
+
+	Depois que fizer o cache das cartas e das imagens fazer tudo voltar a funcionar
+
+	Voltar a funcionar como era antes
+	Dar uma limpa nisso
+	Testar de verdade
+
+	Quando dar hover a imagem aparecer do lado
+		https://akryum.github.io/v-tooltip/#/
+		https://michaelnthiessen.com/hover-in-vue/
+		https://stackoverflow.com/questions/30911933/mouseover-or-hover-vue-js
+
+	Ver como vai ficar a maybeboard
+		V0.4
+		Colocar uma ordem
+		First In First Out
+		https://en.wikipedia.org/wiki/Doubly_linked_list
+			Prev and Next are foreignKey ou Integer para o mesmo elemento
+		https://stackoverflow.com/questions/330482/best-way-to-save-a-ordered-list-to-the-database-while-keeping-the-ordering
+		https://stackoverflow.com/questions/1861207/saving-order-preference-in-sql
+
+	Fazer o server
+		Entrega a decklist e ele ajeita o nome, da cache no banco das cartas e remove as duplicatas
+		Dar cache na imagem
+    CRUD das cartas
+        Definir Set e Number as unique index https://stackoverflow.com/questions/42195348/how-to-define-unique-index-on-multiple-columns-in-sequelize
+
+	Usar o scryfall no parserDecklist inves de no cards
+
+	Ver onde está dando esse erro de image_uris
 
 	Separar a logica num arquivo js e testar
 		https://www.chaijs.com/api/bdd/
 		Falta testar de verdade
-			Import decklist
+			parserDecklist
 				Só a lista sem nada
 				Com tab
 				Com // barras no nome - Wear // Tear
+			scryfall
+				Testar 404 - Niv
+				Testar timer
+
 
 	Remover a logica do vue e colocar em uns arquivos a parte
 			Fazer a parte dos insert sem duplicata com testes
 			Importar as informações das cartas
 			Um pouco do CSS
 			     Listas na horizontal
+					 Bordar bonita baseado no mana_cost
 
 	Colocar dois repos diferentes e so ativa os dois com um bash
 

@@ -7,20 +7,11 @@ export default new Vuex.Store({
   state: {
     commander: [], // Partner Commander
     decklist: new Map(),
+
   },
   mutations: {
     setDecklist(state, payload) {
       state.decklist = payload.decklist;
-    },
-    updateCategory(state, payload) {
-      const name = payload.categoryName;
-      const cards = payload.categoryCards;
-      if (name === 'Mainboard') {
-        state.mainboard = cards;
-      } else {
-        const stateName = name.substring(0, name.lastIndexOf(' '));
-        Vue.set(state[stateName], 'cards', cards);
-      }
     },
   },
   getters: {
