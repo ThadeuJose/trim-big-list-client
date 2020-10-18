@@ -1,11 +1,14 @@
 <template>
 <div>
-  <img src="http://localhost:3000/images/cards/akh-4-approach-of-the-second-sun.jpg" alt="Test">
-  <p>Commander</p>
-  <input type="text" v-model='commander'>
-  <textarea v-model='input'></textarea>
-  <button @click='import_deck'>Import</button>
-  <listOfCards ref='listOfCards'/>
+  <div v-if='isDecklistEmpty'>
+    <p>Commander</p>
+    <input type="text" v-model='commander'>
+    <textarea v-model='input'></textarea>
+    <button @click='import_deck'>Import</button>
+  </div>
+  <div v-if='!isDecklistEmpty'>
+    <listOfCards/>
+  </div>
 </div>
 </template>
 
@@ -53,6 +56,13 @@ export default {
       // this.$store.commit('setDecklist', { decklist });
       // this.$refs.listOfCards.update();
       // console.log(this.$store.getters.decklist);
+    },
+  },
+  computed: {
+    isDecklistEmpty() {
+      const array = this.$store.getters.decklist;
+      console.log(array);
+      return array.length === 0;
     },
   },
 };

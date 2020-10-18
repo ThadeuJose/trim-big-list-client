@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h1>This is Import Deck Page</h1>
+  <div>
+    <h1>Import Deck</h1>
     <ImportDeck></ImportDeck>
   </div>
 </template>

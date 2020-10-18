@@ -1,15 +1,16 @@
 <template>
-  <div style="overflow: scroll;  width: 1100px;
-  height: 1100px;">
-  {{listOfCards}} | {{maybeboard}}
+  <div class="main">
+  <!-- {{listOfCards}} | {{maybeboard}} -->
 
     <!-- <textarea name="cards" rows="8" cols="80" v-model="cardsText"></textarea>
     <button @click = "updateText">Update Text</button> -->
 
-    <div v-for="(items,index) in listOfCards" :key="index">
-      {{makeTitle(items)}}
+    <div class='card_box drop-shadow' v-for="(items,index) in listOfCards" :key="index">
+      <div class="title_box">
+        {{makeTitle(items)}}
+      </div>
       <Container class='container' group-name='cards'
-      :get-child-payload="getChildPayload(listOfCards, index)"
+         :get-child-payload="getChildPayload(listOfCards, index)"
          @drop="onDrop(index, $event)">
          <Draggable v-for="item in items.cards" :key="item">
            <div class="draggable-item">
@@ -18,7 +19,6 @@
            </div>
          </Draggable>
        </Container>
-
     </div>
 
   </div>
@@ -63,7 +63,6 @@ export default {
       }
     },
 
-    // TODO: Ajeitar o titulo
     makeTitle(obj) {
       const title = obj.categoryName;
       if (title === 'Mainboard') {
@@ -138,6 +137,25 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.main {
+  overflow: scroll;
+  display:flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.card_box {
+  margin: 20px;
+}
+
+.title_box {
+  margin: 10px;
+}
+
+.drop-shadow {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
 .draggable-item {
   display:flex;
   border: 1px solid black;

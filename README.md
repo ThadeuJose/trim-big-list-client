@@ -13,18 +13,21 @@ Fazer o export
 		Fazer o export
 			Só o file mesmo
 
-		Ajeitar o css
-			Colocar as colunas uma do lado da outra
-			Classe para arrastar e colocar no lugar
+		Ver como receber as informações das cartas 	
 
-		Pegar as informações da carta
+		Ajeitar o css			
+			Classe para arrastar e colocar no lugar
+			Colocar a barra de scroll no final da box
+			Colocar icone inves do botão maybeboard
 
 		Colocar o commander no lugar
 			Com cmc bonito e tal
+			Melhorar o menu
 
-		Ajeitar a parte de import visualmente
+		Ajeitar o css do import
+			Text area maior e coisas do tipo
 
-		Melhorar o menu
+		Pegar as informações da carta
 
 		Por enquanto fazer 300 get e pegar o resultado
 			Só fazer retornando as informações do server na primeira chamada na proxima versão
