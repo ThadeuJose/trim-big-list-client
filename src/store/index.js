@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     commander: [], // Partner Commander
-    decklist: new Map(),
+    decklist: [],
 
   },
   mutations: {
@@ -17,7 +17,7 @@ export default new Vuex.Store({
   getters: {
     all: (state) => state,
     decklist: (state) => state.decklist,
-    maxQuantity: (state) => (id) => state.decklist.get(id).maxQuantity,
+    maxQuantity: (state) => (id) => state.decklist[id].maxQuantity,
     listOfCards: (state) => {
       const response = {};
       state.decklist.forEach((value, key) => {

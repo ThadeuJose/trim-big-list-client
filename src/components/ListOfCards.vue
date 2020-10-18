@@ -1,22 +1,25 @@
 <template>
-  <div>
-    {{cards}} | {{maybeboard}}
+  <div style="overflow: scroll;  width: 1100px;
+  height: 1100px;">
+  {{listOfCards}} | {{maybeboard}}
 
-    <textarea name="cards" rows="8" cols="80" v-model="cardsText"></textarea>
-    <button @click = "updateText">Update Text</button>
+    <!-- <textarea name="cards" rows="8" cols="80" v-model="cardsText"></textarea>
+    <button @click = "updateText">Update Text</button> -->
 
-    <div v-for="(items,index) in cards" :key="index">
-        {{makeTitle(index,items)}}
-        <Container class='container' group-name='cards' :get-child-payload="getChildPayload(index)"
+    <div v-for="(items,index) in listOfCards" :key="index">
+      {{makeTitle(items)}}
+      <Container class='container' group-name='cards'
+      :get-child-payload="getChildPayload(listOfCards, index)"
          @drop="onDrop(index, $event)">
-         <Draggable v-for="item in items" :key="item">
+         <Draggable v-for="item in items.cards" :key="item">
            <div class="draggable-item">
              <cards :cardname='item'></cards>
              <button @click = "moveToMaybeboard(item,index)">Maybeboard</button>
            </div>
          </Draggable>
        </Container>
-     </div>
+
+    </div>
 
   </div>
 </template>
@@ -35,29 +38,25 @@ export default {
   },
   data() {
     return {
-      cards: {},
       cardsText: '',
       maybeboard: [], // TODO: Mover para a store
     };
   },
   methods: {
-    update() {
-      this.cards = this.$store.getters.listOfCards;
-    },
 
-    updateText() {
-      this.cardsText = '';
-      this.cardsText += `//Maybeboard\n${this.maybeboard.join('\n')}\n\n`;
-      Object.entries(this.cards).forEach((value) => {
-        this.cardsText += `//${value[0]}\n${value[1].join('\n')}\n\n`;
-      });
-    },
+    // updateText() {
+    //   this.cardsText = '';
+    //   this.cardsText += `//Maybeboard\n${this.maybeboard.join('\n')}\n\n`;
+    //   Object.entries(this.cards).forEach((value) => {
+    //     this.cardsText += `//${value[0]}\n${value[1].join('\n')}\n\n`;
+    //   });
+    // },
 
     moveToMaybeboard(elem, listname) {
       console.log(`${elem} ${listname}`);
-      console.log(this.cards[listname]);
+      console.log(this.listOfCards[listname]);
       this.maybeboard.push(elem);
-      const array = this.cards[listname];
+      const array = this.listOfCards[listname].cards;
       const index = array.indexOf(elem);
       if (index > -1) {
         array.splice(index, 1);
@@ -65,11 +64,12 @@ export default {
     },
 
     // TODO: Ajeitar o titulo
-    makeTitle(title, arr) {
+    makeTitle(obj) {
+      const title = obj.categoryName;
       if (title === 'Mainboard') {
-        return `${title} ${this.countItems(arr)}`;
+        return `${title} ${this.countItems(obj.cards)}`;
       }
-      return `${title} ${this.countItems(arr)}/${this.$store.getters.maxQuantity(title)}`;
+      return `${title} ${this.countItems(obj.cards)}/${obj.maxQuantity}`;
     },
 
     countItems(items) {
@@ -86,14 +86,20 @@ export default {
       const categoryCards = this.applyDrag(categoryName, dropResult);
       if (categoryCards) {
         console.log(categoryCards);
-        this.cards[categoryName] = categoryCards;
+        this.listOfCards[categoryName].cards = categoryCards;
         // this.$store.commit('updateCategory', { categoryName, categoryCards });
       }
     },
 
     applyDrag(categoryName, dragResult) {
       const { removedIndex, addedIndex, payload } = dragResult;
-      const arr = this.cards[categoryName];
+      console.log(dragResult);
+      const arr = this.listOfCards[categoryName].cards;
+      if (typeof arr === 'undefined') {
+        console.log(categoryName);
+        console.log(arr);
+      }
+
       if (removedIndex === null && addedIndex === null) {
         return null;
       }
@@ -113,8 +119,18 @@ export default {
       return result;
     },
 
-    getChildPayload(listIndex) {
-      return (index) => this.cards[listIndex][index];
+    getChildPayload(listOfCards, listIndex) {
+      return (index) => {
+        console.log(listOfCards[listIndex][index]);
+        console.log(index);
+        return listOfCards[listIndex].cards[index];
+      };
+    },
+  },
+
+  computed: {
+    listOfCards() {
+      return this.$store.getters.decklist;
     },
   },
 };
@@ -122,8 +138,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.draggable-item {
+  display:flex;
+  border: 1px solid black;
+}
 .container{
-  background-color: black;
+  /* background-color: black; */
+  /* border: 1px solid black; */
 }
 .card-ghost {
     transition: transform 0.18s ease;

@@ -43,6 +43,7 @@ export default {
       }).then((response) => response.json())
         .then((responseData) => {
           console.log('Success:', responseData);
+          this.$store.commit('setDecklist', { decklist: responseData });
         })
         .catch((error) => {
           console.error('Error:', error);

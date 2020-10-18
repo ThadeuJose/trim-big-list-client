@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import getCard from '@/resources/scryfall';
+// import getCard from '@/resources/scryfall';
 
 export default {
   name: 'cards',
@@ -28,11 +28,11 @@ export default {
     async getCardFromScryfall(cardname) {
       // TODO: Ajeitar se vier com número e colocar o hover da imagem
       this.card_name = cardname;
-      const cardnameScryfall = cardname.substring(cardname.indexOf(' ')).trim();
-      getCard(cardnameScryfall).then((data) => {
-        this.color_identity = data.color_identity;
-        this.mana_cost = data.mana_cost;
-      });
+      // const cardnameScryfall = cardname.substring(cardname.indexOf(' ')).trim();
+      // getCard(cardnameScryfall).then((data) => {
+      //   this.color_identity = data.color_identity;
+      //   this.mana_cost = data.mana_cost;
+      // });
     },
   },
 };

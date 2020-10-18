@@ -2,13 +2,45 @@
 A personal project to trim a big EDH list to a Commander Deck
 
 # Next Step
-Inserir a carta sem duplicata com erro mesmo e depois conserta os decks
-Fazer o CRUD das cartas
-	U
-
+Fazer o Maybeboard com Drag and Drop
+Fazer o export
 
 # TODO
-		Ajeitar o css dessa bagaça +-
+		Limpar isso aqui
+
+		Fazer o Maybeboard com Drag and Drop
+
+		Fazer o export
+			Só o file mesmo
+
+		Ajeitar o css
+			Colocar as colunas uma do lado da outra
+			Classe para arrastar e colocar no lugar
+
+		Pegar as informações da carta
+
+		Colocar o commander no lugar
+			Com cmc bonito e tal
+
+		Ajeitar a parte de import visualmente
+
+		Melhorar o menu
+
+		Por enquanto fazer 300 get e pegar o resultado
+			Só fazer retornando as informações do server na primeira chamada na proxima versão
+			Ajeitar o nome das cartas
+			Colocar o maybeboard na store
+
+-----------------------------------------------------------
+
+
+		Fazer um endpoint para o cardtype
+
+		Cadastrar a carta com o card type
+			https://stackoverflow.com/questions/37813467/sequelize-js-insert-a-model-with-one-to-many-relationship
+
+		Mostrar todas as imagens de uma carta
+
 		Fazer o CRUD das cartas
 			C
 				Falta escolher as imagens
@@ -16,6 +48,7 @@ Fazer o CRUD das cartas
 				Falta mostrar as imagens
 			U
 			D
+
 		Quando inserir a decklist as cartas tem que estar cadastradas? Nope
 
 		Inserir sem duplicata
