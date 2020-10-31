@@ -4,18 +4,22 @@ A personal project to trim a big EDH list to a Commander Deck
 # Next Step
 Fazer o Maybeboard com Drag and Drop
 Fazer o export
+	No server mesmo
+	https://stackoverflow.com/questions/21950049/create-a-text-file-in-node-js-from-a-string-and-stream-it-in-response/21950959
 
 # TODO
 		Limpar isso aqui
 
-		Fazer o Maybeboard com Drag and Drop
+		Fazer o Maybeboard
+			Colocar o maybeboard na store se não tiver
+				{ categoryName: 'Maybeboard', maxQuantity: -1, cards: [] }, { categoryName: 'Garbage', maxQuantity: -1, cards: [] }
+				Refazer o isDecklistEmpty para não contar isso
 
-		Fazer o export
-			Só o file mesmo
-
-		Ver como receber as informações das cartas 	
-
-		Ajeitar o css			
+		Ajeitar o css						
+			Ajeitar as cartas primeiro
+			https://github.com/FortAwesome/vue-fontawesome
+			https://fontawesome.com/how-to-use/on-the-web/using-with/vuejs
+			https://fontawesome.com/icons/angle-double-up?style=solid
 			Classe para arrastar e colocar no lugar
 			Colocar a barra de scroll no final da box
 			Colocar icone inves do botão maybeboard
@@ -27,15 +31,12 @@ Fazer o export
 		Ajeitar o css do import
 			Text area maior e coisas do tipo
 
-		Pegar as informações da carta
-
-		Por enquanto fazer 300 get e pegar o resultado
-			Só fazer retornando as informações do server na primeira chamada na proxima versão
-			Ajeitar o nome das cartas
-			Colocar o maybeboard na store
+		Fazer o export
+			Só o file mesmo
 
 -----------------------------------------------------------
 
+		Ajeitar o nome das cartas
 
 		Fazer um endpoint para o cardtype
 
@@ -189,6 +190,11 @@ Fazer o export
 		Uns arquivos de configuração
 
 # Technical Debt
+	Refatorar a store
+
+	Refatorar os componentes
+
+	Fazer testes 
 
 
 # Source

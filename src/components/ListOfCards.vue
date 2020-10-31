@@ -1,20 +1,20 @@
 <template>
   <div class="main">
-  <!-- {{listOfCards}} | {{maybeboard}} -->
-
+  <!-- {{decklist}} | {{maybeboard}} -->
+{{decklist}}
     <!-- <textarea name="cards" rows="8" cols="80" v-model="cardsText"></textarea>
     <button @click = "updateText">Update Text</button> -->
 
-    <div class='card_box drop-shadow' v-for="(items,index) in listOfCards" :key="index">
+    <div class='card_box drop-shadow' v-for="(items,index) in decklist" :key="index">
       <div class="title_box">
         {{makeTitle(items)}}
       </div>
       <Container class='container' group-name='cards'
-         :get-child-payload="getChildPayload(listOfCards, index)"
+         :get-child-payload="getChildPayload(decklist, index)"
          @drop="onDrop(index, $event)">
          <Draggable v-for="item in items.cards" :key="item">
            <div class="draggable-item">
-             <cards :cardname='item'></cards>
+             <cards :card='item'></cards>
              <button @click = "moveToMaybeboard(item,index)">Maybeboard</button>
            </div>
          </Draggable>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { Container, Draggable } from 'vue-smooth-dnd';
 import cards from '@/components/Cards.vue';
 
@@ -52,16 +53,16 @@ export default {
     //   });
     // },
 
-    moveToMaybeboard(elem, listname) {
-      console.log(`${elem} ${listname}`);
-      console.log(this.listOfCards[listname]);
-      this.maybeboard.push(elem);
-      const array = this.listOfCards[listname].cards;
-      const index = array.indexOf(elem);
-      if (index > -1) {
-        array.splice(index, 1);
-      }
-    },
+    // moveToMaybeboard(elem, listname) {
+    //   console.log(`${elem} ${listname}`);
+    //   console.log(this.decklist[listname]);
+    //   this.maybeboard.push(elem);
+    //   const array = this.decklist[listname].cards;
+    //   const index = array.indexOf(elem);
+    //   if (index > -1) {
+    //     array.splice(index, 1);
+    //   }
+    // },
 
     makeTitle(obj) {
       const title = obj.categoryName;
@@ -72,11 +73,10 @@ export default {
     },
 
     countItems(items) {
-      let sum = 0;
-      Object.values(items).forEach((i) => {
-        const quantity = parseInt(i.substring(0, i.indexOf(' ')), 10);
-        sum += quantity;
-      });
+      const sum = 0;
+      // const quantity = parseInt(i.substring(0, i.indexOf(' ')), 10);
+      // sum += quantity;
+      Object.values(items).forEach((i) => console.log(i));
       return sum;
     },
 
@@ -85,7 +85,7 @@ export default {
       const categoryCards = this.applyDrag(categoryName, dropResult);
       if (categoryCards) {
         console.log(categoryCards);
-        this.listOfCards[categoryName].cards = categoryCards;
+        this.decklist[categoryName].cards = categoryCards;
         // this.$store.commit('updateCategory', { categoryName, categoryCards });
       }
     },
@@ -93,7 +93,7 @@ export default {
     applyDrag(categoryName, dragResult) {
       const { removedIndex, addedIndex, payload } = dragResult;
       console.log(dragResult);
-      const arr = this.listOfCards[categoryName].cards;
+      const arr = this.decklist[categoryName].cards;
       if (typeof arr === 'undefined') {
         console.log(categoryName);
         console.log(arr);
@@ -118,19 +118,17 @@ export default {
       return result;
     },
 
-    getChildPayload(listOfCards, listIndex) {
+    getChildPayload(decklist, listIndex) {
       return (index) => {
-        console.log(listOfCards[listIndex][index]);
+        console.log(decklist[listIndex][index]);
         console.log(index);
-        return listOfCards[listIndex].cards[index];
+        return decklist[listIndex].cards[index];
       };
     },
   },
 
   computed: {
-    listOfCards() {
-      return this.$store.getters.decklist;
-    },
+    ...mapGetters(['decklist']),
   },
 };
 </script>

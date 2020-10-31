@@ -1,7 +1,14 @@
 <template>
   <div>
-    {{card_name}}
-    {{mana_cost}}
+    <div class="">
+      {{card.quantity}}
+    </div>
+    <div class="">
+      {{card.name}}
+    </div>
+    <div class="" v-if='card.manaCost'>
+      {{card.manaCost}}
+    </div>
   </div>
 </template>
 
@@ -10,30 +17,8 @@
 
 export default {
   name: 'cards',
-  props: ['cardname'],
-  data() {
-    return {
-      qtd: 0,
-      object: '',
-      card_name: '',
-      image: '',
-      mana_cost: '',
-      details: '',
-    };
-  },
-  created() {
-    this.getCardFromScryfall(this.cardname);
-  },
+  props: ['card'],
   methods: {
-    async getCardFromScryfall(cardname) {
-      // TODO: Ajeitar se vier com número e colocar o hover da imagem
-      this.card_name = cardname;
-      // const cardnameScryfall = cardname.substring(cardname.indexOf(' ')).trim();
-      // getCard(cardnameScryfall).then((data) => {
-      //   this.color_identity = data.color_identity;
-      //   this.mana_cost = data.mana_cost;
-      // });
-    },
   },
 };
 </script>
